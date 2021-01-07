@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project
+Create a webapp where you can grade whiskeys that you have tried in the past.
 
-Things you may want to cover:
+For each whiskey you should be able to define the title, a small description and grades for tase, color, and smokiness. 
 
-* Ruby version
+You should be able to search the entries based on title and description. Filtering on grades should be available.
 
-* System dependencies
 
-* Configuration
+## Requirements
+- [x] The backend should be in Ruby on Rails.
+- [ ] A minimum of two models should be used with a has many relations.
+- [ ] Searching should be done in the backend
+- [ ] The frontend should be enriched with React, so react component to make the page dynamic (not a full SPA)
+- [x] Tests should be written in RSpec.
+- [x] Data should be stored in a RDBMS
 
-* Database creation
+## Dependencies
+* Rails version: 6.1.0
+* Ruby version: 3.0.0
+* Postgres 13
 
-* Database initialization
+## Development Setup
+Run `bundle install`
+As Postgres user create a `whiskeygrader` role in psql
+`create role whiskeygrader with password 'password1'`
+Setup development and test database with: `rails db:setup`
+Run `bundle exec rspec` to run test suite
 
-* How to run the test suite
+## Deployment instructions
+TODO
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
