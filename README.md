@@ -23,9 +23,12 @@ You should be able to search the entries based on title and description. Filteri
 
 ## Development Setup
 Run `bundle install`
+
 As Postgres user create a `whiskeygrader` role in psql
 `create role whiskeygrader with password 'password1'`
+
 Setup development and test database with: `rails db:setup`
+
 Run `bundle exec rspec` to run test suite
 
 ## Deployment instructions
