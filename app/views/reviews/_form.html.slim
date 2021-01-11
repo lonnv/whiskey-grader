@@ -1,45 +1,25 @@
-= form_with model: @review  do |form|
-  .form-group
-    = form.label :title
-    = form.text_field :title
-  .form-group
-    = form.label :description
-    = form.text_area :description
-
-  .form-group#taste
-    = form.label :taste_1, "1"
-    = form.radio_button :taste, 1
-    = form.label :taste_2, "2"
-    = form.radio_button :taste, 2
-    = form.label :taste_3, "3"
-    = form.radio_button :taste, 3
-    = form.label :taste_4, "4"
-    = form.radio_button :taste, 4
-    = form.label :taste_5, "5"
-    = form.radio_button :taste, 5
-  
-  .form-group#color
-    = form.label :color_1, "1"
-    = form.radio_button :color, 1
-    = form.label :color_2, "2"
-    = form.radio_button :color, 2
-    = form.label :color_3, "3"
-    = form.radio_button :color, 3
-    = form.label :color_4, "4"
-    = form.radio_button :color, 4
-    = form.label :color_5, "5"
-    = form.radio_button :color, 5
-
-  .form-group#smokiness
-    = form.label :smokiness_1, "1"
-    = form.radio_button :smokiness, 1
-    = form.label :smokiness_2, "2"
-    = form.radio_button :smokiness, 2
-    = form.label :smokiness_3, "3"
-    = form.radio_button :smokiness, 3
-    = form.label :smokiness_4, "4"
-    = form.radio_button :smokiness, 4
-    = form.label :smokiness_5, "5"
-    = form.radio_button :smokiness, 5
-
-  = form.submit 'Submit'
+.container.form-panel
+  div.row
+    div.col-12.col-lg-8.m-auto
+      = form_with model: @review  do |form|
+        .form-group.required
+          = form.label :title, class: 'control-label'
+          = form.text_field :title, class: 'form-control'
+        .form-group.required
+          = form.label :description, class: 'control-label'
+          = form.text_area :description, class: 'form-control'
+        
+        .form-group.required
+          = form.label :taste_grade, class: 'control-label'
+          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'taste_grade', value: @review.taste_grade }.compact)
+        
+        .form-group.required
+          = form.label :color_grade, class: 'control-label'
+          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'color_grade', value: @review.color_grade }.compact)
+        
+        .form-group.required
+          = form.label :smokiness_grade, class: 'control-label'
+          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'smokiness_grade', value: @review.smokiness_grade }.compact)
+        
+        .button-row.d-flex.justify-content-end
+          = form.submit 'Submit', class: 'btn btn-secondary'

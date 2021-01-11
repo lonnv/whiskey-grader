@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Reviews" do
+RSpec.feature "Reviews", :js do
     scenario "Visitor creates a new review" do
       visit "/reviews/new"
 
@@ -12,9 +12,10 @@ RSpec.feature "Reviews" do
         not bad but light and without dramtic complexity; 
         Finish is soft and sweet and my favorite part of this Scotch.
        """
-      within('#taste'){ choose option: 3 }
-      within('#color'){ choose option: 2 }
-      within('#smokiness'){ choose option: 4 }
+
+      within('#taste_grade'){ page.find('#taste_grade3').click() }
+      within('#color_grade'){ page.find('#color_grade2').click()  }
+      within('#smokiness_grade'){ page.find('#smokiness_grade4').click()  }
       
       click_button 'Submit'
   

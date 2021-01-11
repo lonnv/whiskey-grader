@@ -11,3 +11,8 @@ html, body {
     background: $light;
     color: $dark;
 }
+
+.form-group.required .control-label:after { 
+    content:"*";
+    color: $secondary;
+ }
