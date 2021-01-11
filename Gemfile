@@ -23,6 +23,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :development do

@@ -18,7 +18,6 @@ RSpec.feature "Reviews", :js do
       within('#smokiness_grade'){ page.find('#smokiness_grade4').click()  }
       
       click_button 'Submit'
-  
       expect(page).to have_text('Thank you for creating a review')
     end
 end

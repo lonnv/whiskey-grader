@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_10_142239) do
     t.integer "taste_grade"
     t.integer "color_grade"
     t.integer "smokiness_grade"
+    t.float "average_grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

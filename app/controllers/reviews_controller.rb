@@ -1,11 +1,12 @@
 class ReviewsController < ApplicationController
   def new
-    @review = Review.new
+    @form = ReviewForm.new
   end
 
   def create
-    @review = Review.new(review_params)
-    if @review.save
+    @form = ReviewForm.new(review_params)
+
+    if @form.submit
         redirect_to new_review_path, notice: 'Thank you for creating a review'
     else
         render :new
@@ -15,12 +16,12 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(
-        :title,
-        :description,
-        :taste,
-        :color,
-        :smokiness
+    params.require(:review_form).permit(
+      :title,
+      :description,
+      :taste_grade,
+      :color_grade,
+      :smokiness_grade
     )
   end
 end

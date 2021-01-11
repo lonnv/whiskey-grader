@@ -6,7 +6,7 @@ class CreateReview < ActiveRecord::Migration[6.1]
       t.integer :taste_grade
       t.integer :color_grade
       t.integer :smokiness_grade
-      
+      t.float :average_grade
       t.timestamps
     end
   end

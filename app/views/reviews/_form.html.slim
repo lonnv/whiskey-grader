@@ -1,7 +1,7 @@
 .container.form-panel
   div.row
     div.col-12.col-lg-8.m-auto
-      = form_with model: @review  do |form|
+      = form_with model: @form, url: reviews_path  do |form|
         .form-group.required
           = form.label :title, class: 'control-label'
           = form.text_field :title, class: 'form-control'
@@ -11,15 +11,15 @@
         
         .form-group.required
           = form.label :taste_grade, class: 'control-label'
-          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'taste_grade', value: @review.taste_grade }.compact)
+          = react_component('StarRatingComponent', { modelName: 'review_form', fieldName: 'taste_grade', value: @form.taste_grade }.compact)
         
         .form-group.required
           = form.label :color_grade, class: 'control-label'
-          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'color_grade', value: @review.color_grade }.compact)
+          = react_component('StarRatingComponent', { modelName: 'review_form', fieldName: 'color_grade', value: @form.color_grade }.compact)
         
         .form-group.required
           = form.label :smokiness_grade, class: 'control-label'
-          = react_component('StarRatingComponent', { modelName: 'review', fieldName: 'smokiness_grade', value: @review.smokiness_grade }.compact)
+          = react_component('StarRatingComponent', { modelName: 'review_form', fieldName: 'smokiness_grade', value: @form.smokiness_grade }.compact)
         
         .button-row.d-flex.justify-content-end
           = form.submit 'Submit', class: 'btn btn-secondary'
