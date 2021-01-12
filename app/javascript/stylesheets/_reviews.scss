@@ -1,4 +1,4 @@
-.form-panel {
+.form-panel, .table-panel {
     background: $light;
     width: 100%;
     color: $dark;
@@ -6,6 +6,10 @@
     border-radius: 6px;
     padding: 3em 1em;
     margin: 1em;
+}
+
+.search-row {
+    margin-bottom: 1em
 }
 
 .star-rating {

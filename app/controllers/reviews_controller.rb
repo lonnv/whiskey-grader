@@ -1,4 +1,20 @@
 class ReviewsController < ApplicationController
+  def index
+    respond_to do |format|
+      format.html
+      format.json do
+        @reviews = Review.paginate(page: params[:page], per_page: params[:page_size])
+        @entries = ActiveModel::Serializer::CollectionSerializer.new(@reviews, serializer: ReviewSerializer)
+        render json: {
+          entries: @entries,
+          :current_page => @reviews.current_page,
+          :per_page => @reviews.per_page,
+          :total_entries => @reviews.total_entries    
+        }
+      end
+    end
+  end
+
   def new
     @form = ReviewForm.new
   end
@@ -25,3 +41,4 @@ class ReviewsController < ApplicationController
     )
   end
 end
+
