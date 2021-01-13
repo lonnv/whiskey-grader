@@ -26,8 +26,10 @@ Run `bundle install`
 
 As Postgres user create a `whiskeygrader` role in psql
 `create role whiskeygrader with password 'password1'`
-
 Setup development and test database with: `rails db:setup`
+
+As Postgres user connect to development and test database with psql and install the pg_trgm extension
+`CREATE EXTENSION pg_trgm;`
 
 Run `bundle exec rspec` to run test suite
 

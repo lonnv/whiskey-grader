@@ -33,15 +33,42 @@ RSpec.feature 'Reviews', :js do
     ).submit
 
     visit '/reviews'
-    
+
     expect(page).to have_content('Showing 1 of ~1 results')
     expect(page).to have_content('Macallan, 15 Y - Triple Cask Matured')
     expect(page).to have_content(5)
   end
 
+  scenario 'Visitor can search in existing reviews' do
+    ReviewForm.new(
+      title: 'Macallan, 15 Y - Triple Cask Matured',
+      description: 'Aroma is not unpleasant but it’s not earth-shattering either.',
+      taste_grade: 5,
+      color_grade: 4,
+      smokiness_grade: 3
+    ).submit
+
+    ReviewForm.new(
+      title: 'Glenfiddich 12Y',
+      description: 'Finish is soft and sweet and my favorite part of this Scotch.',
+      taste_grade: 5,
+      color_grade: 4,
+      smokiness_grade: 3
+    ).submit
+
+    visit '/reviews'
+
+    fill_in 'search-form', with: 'Macall'
+    expect(page).to have_content('Macallan, 15 Y - Triple Cask Matured')
+    expect(page).not_to have_content('Glenfiddich 12Y')
+
+    fill_in 'search-form', with: 'Finish'
+    expect(page).not_to have_content('Macallan, 15 Y - Triple Cask Matured')
+    expect(page).to have_content('Glenfiddich 12Y')
+  end
 
   scenario 'Visitor can paginate through reviews' do
-    38.times do 
+    38.times do
       ReviewForm.new(
         title: FFaker::Book.title,
         description: FFaker::HipsterIpsum.sentences,

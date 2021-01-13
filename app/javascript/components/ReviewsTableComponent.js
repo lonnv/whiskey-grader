@@ -151,7 +151,7 @@ function ReviewsTableComponent({ fetchUrl }) {
         const params = {
           page: pageIndex + 1,
           page_size: pageSize,
-          filter: globalFilter,
+          ...(globalFilter && {filter: globalFilter})
         };
         url.search = new URLSearchParams(params).toString();
 

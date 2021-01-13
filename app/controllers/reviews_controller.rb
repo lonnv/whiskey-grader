@@ -5,7 +5,9 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        @reviews = Review.paginate(page: params[:page], per_page: params[:page_size])
+        print(params[:filter])
+        @reviews = params[:filter].present? ? Review.search_review(params[:filter]) : Review.all
+        @reviews = @reviews.paginate(page: params[:page], per_page: params[:page_size])
         @entries = ActiveModel::Serializer::CollectionSerializer.new(@reviews, serializer: ReviewSerializer)
         render json: {
           entries: @entries,
