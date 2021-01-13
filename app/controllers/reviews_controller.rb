@@ -29,9 +29,8 @@ class ReviewsController < ApplicationController
 
   def create
     @form = ReviewForm.new(review_params)
-
     if @form.submit
-      redirect_to new_review_path, notice: 'Thank you for creating a review'
+      redirect_to reviews_path, notice: 'Thank you for creating a review'
     else
       render :new
     end
@@ -45,7 +44,8 @@ class ReviewsController < ApplicationController
       :description,
       :taste_grade,
       :color_grade,
-      :smokiness_grade
+      :smokiness_grade,
+      :brand
     )
   end
 end

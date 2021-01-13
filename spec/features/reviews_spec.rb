@@ -6,7 +6,8 @@ RSpec.feature 'Reviews', :js do
   scenario 'Visitor creates a new review' do
     visit '/reviews/new'
 
-    fill_in 'Title', with: 'Macallan, 15 Y - Triple Cask Matured'
+    find('.brand-select').find('input').fill_in with: "Macallan\n"
+    fill_in 'Title', with: '15 Y - Triple Cask Matured'
     fill_in 'Description', with: ''"
         Aroma is not unpleasant but it’s not earth-shattering either,
         rather basic, but on the good side of basic, with its delivery of fruity and malty aromas;
@@ -14,7 +15,6 @@ RSpec.feature 'Reviews', :js do
         not bad but light and without dramtic complexity;
         Finish is soft and sweet and my favorite part of this Scotch.
        "''
-
     within('#taste_grade') { page.find('#taste_grade3').click }
     within('#color_grade') { page.find('#color_grade2').click }
     within('#smokiness_grade') { page.find('#smokiness_grade4').click }
@@ -26,6 +26,7 @@ RSpec.feature 'Reviews', :js do
   scenario 'Visitor can see existing reviews' do
     ReviewForm.new(
       title: 'Macallan, 15 Y - Triple Cask Matured',
+      brand: 'Macallan',
       description: 'description',
       taste_grade: 5,
       color_grade: 4,
@@ -42,6 +43,7 @@ RSpec.feature 'Reviews', :js do
   scenario 'Visitor can visit show page of an existing review' do
     ReviewForm.new(
       title: 'Macallan, 15 Y - Triple Cask Matured',
+      brand: 'Macallan',
       description: ''"
       Aroma is not unpleasant but it’s not earth-shattering either,
       rather basic, but on the good side of basic, with its delivery of fruity and malty aromas;
@@ -62,7 +64,8 @@ RSpec.feature 'Reviews', :js do
 
   scenario 'Visitor can search in existing reviews' do
     ReviewForm.new(
-      title: 'Macallan, 15 Y - Triple Cask Matured',
+      title: 'Macallan 15 Y - Triple Cask Matured',
+      brand: 'Macallan',
       description: 'Aroma is not unpleasant but it’s not earth-shattering either.',
       taste_grade: 5,
       color_grade: 4,
@@ -71,6 +74,7 @@ RSpec.feature 'Reviews', :js do
 
     ReviewForm.new(
       title: 'Glenfiddich 12Y',
+      brand: 'Glenfiddich',
       description: 'Finish is soft and sweet and my favorite part of this Scotch.',
       taste_grade: 5,
       color_grade: 4,
@@ -79,12 +83,12 @@ RSpec.feature 'Reviews', :js do
 
     visit '/reviews'
 
-    fill_in 'search-form', with: 'Macall'
-    expect(page).to have_content('Macallan, 15 Y - Triple Cask Matured')
+    fill_in 'search-form', with: 'Macalla'
+    expect(page).to have_content('Macallan 15 Y - Triple Cask Matured')
     expect(page).not_to have_content('Glenfiddich 12Y')
 
     fill_in 'search-form', with: 'Finish'
-    expect(page).not_to have_content('Macallan, 15 Y - Triple Cask Matured')
+    expect(page).not_to have_content('Macallan 15 Y - Triple Cask Matured')
     expect(page).to have_content('Glenfiddich 12Y')
   end
 
@@ -92,6 +96,7 @@ RSpec.feature 'Reviews', :js do
     38.times do
       ReviewForm.new(
         title: FFaker::Book.title,
+        brand: %w[Macallan Glenfiddich Glenlivit Bowmore].sample,
         description: FFaker::HipsterIpsum.sentences,
         taste_grade: rand(1..5),
         color_grade: rand(1..5),

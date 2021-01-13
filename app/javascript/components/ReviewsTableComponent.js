@@ -107,15 +107,17 @@ function Table({
   );
 }
 
-
 function ReviewsTableComponent({ fetchUrl }) {
   const columns = React.useMemo(
     () => [
       {
         Header: "Title",
         accessor: "title",
-        Cell: ({cell}) => <a href={cell.row.original.url}>{cell.row.values.title}</a>
+        Cell: ({ cell }) => (
+          <a href={cell.row.original.url}>{cell.row.values.title}</a>
+        ),
       },
+      { Header: "Brand", accessor: "brand" },
       {
         Header: "Avg grade",
         accessor: "average_grade",
@@ -153,14 +155,13 @@ function ReviewsTableComponent({ fetchUrl }) {
         const params = {
           page: pageIndex + 1,
           page_size: pageSize,
-          ...(globalFilter && {filter: globalFilter})
+          ...(globalFilter && { filter: globalFilter }),
         };
         url.search = new URLSearchParams(params).toString();
 
         fetch(url)
           .then((response) => response.json())
           .then((body) => {
-            console.log(body)
             const serverData = body.entries;
             setData(serverData);
             setReviewsCount(body.total_entries);

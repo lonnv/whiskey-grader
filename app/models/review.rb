@@ -2,12 +2,16 @@
 
 class Review < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_review, against: { title: 'A', description: 'B' },
+  belongs_to :brand
+  pg_search_scope :search_review, against: { title: "A", description: "B" },
+                                  associated_against: {
+                                    brand: [:name],
+                                  },
                                   using: {
-                                    tsearch: { dictionary: 'english' },
+                                    tsearch: { dictionary: "english" },
                                     trigram: {
-                                      threshold: 0.1,
-                                      only: [:title]
-                                    }
+                                      threshold: 0.2,
+                                      only: [:title],
+                                    },
                                   }
 end

@@ -3,8 +3,13 @@
     div.col-12.col-lg-8.m-auto
       = form_with model: @form, url: reviews_path  do |form|
         .form-group.required
+          = form.label :brand, class: 'control-label'
+          = react_component('CreatableSelectComponent', { modelName: 'review_form', fieldName: 'brand', options: @form.brand_options }.compact)
+        
+        .form-group.required
           = form.label :title, class: 'control-label'
           = form.text_field :title, class: 'form-control'
+
         .form-group.required
           = form.label :description, class: 'control-label'
           = form.text_area :description, class: 'form-control'

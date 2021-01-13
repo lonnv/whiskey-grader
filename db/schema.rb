@@ -12,9 +12,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_110_142_239) do
+ActiveRecord::Schema.define(version: 20_210_113_202_653) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension 'pg_trgm'
   enable_extension 'plpgsql'
+
+  create_table 'brands', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
 
   create_table 'reviews', force: :cascade do |t|
     t.string 'title'
@@ -25,5 +32,9 @@ ActiveRecord::Schema.define(version: 20_210_110_142_239) do
     t.float 'average_grade'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'brand_id'
+    t.index ['brand_id'], name: 'index_reviews_on_brand_id'
   end
+
+  add_foreign_key 'reviews', 'brands'
 end

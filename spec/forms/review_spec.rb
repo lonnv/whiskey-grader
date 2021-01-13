@@ -7,6 +7,7 @@ RSpec.describe ReviewForm do
     ReviewForm.new(
       title: 'A title',
       description: 'A description',
+      brand: 'brand',
       taste_grade: 5,
       color_grade: 4,
       smokiness_grade: 2
@@ -48,6 +49,12 @@ RSpec.describe ReviewForm do
       expect(review_form.errors).to have_key(:smokiness_grade)
     end
 
+    it 'is not valid without a brand' do
+      review_form.brand = nil
+      expect(review_form).not_to be_valid
+      expect(review_form.errors).to have_key(:brand)
+    end
+
     it 'is not valid with a taste grade smaller than 1' do
       review_form.taste_grade = 0
       expect(review_form).not_to be_valid
@@ -72,6 +79,15 @@ RSpec.describe ReviewForm do
       it 'calculates and sets the average_grade' do
         expect { subject }.to change { review_form.average_grade }
           .from(nil).to(3.0)
+      end
+
+      it 'creates the brand if not known' do
+        expect { subject }.to change { Brand.count }
+      end
+
+      it 'does not create a brand if already known' do
+        Brand.create(name: 'brand')
+        expect { subject }.not_to change { Brand.count }
       end
 
       it 'creates a new review' do
