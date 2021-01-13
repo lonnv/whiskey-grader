@@ -1,2 +1,5 @@
-.table-panel
-  = react_component('ReviewsTableComponent', fetchUrl: url_for(action: 'index', controller: 'reviews', only_path: false, format: 'json'))
+
+.d-flex.align-items-center.flex-column.justify-content-center.h-100
+  h1 Discover
+  .table-panel
+    = react_component('ReviewsTableComponent', fetchUrl: url_for(action: 'index', controller: 'reviews', only_path: false, format: 'json'))

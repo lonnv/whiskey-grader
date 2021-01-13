@@ -70,14 +70,12 @@ RSpec.describe ReviewForm do
       end
 
       it 'calculates and sets the average_grade' do
-        expect { subject }
-          .to change { review_form.average_grade }
+        expect { subject }.to change { review_form.average_grade }
           .from(nil).to(3.0)
       end
 
       it 'creates a new review' do
-        expect { subject }
-          .to change { Review.count }
+        expect { subject }.to change { Review.count }
           .from(0).to(1)
       end
     end
@@ -90,8 +88,7 @@ RSpec.describe ReviewForm do
       end
 
       it 'does not create a new review' do
-        expect { subject }
-          .not_to change { Review.count }
+        expect { subject }.not_to change { Review.count }
       end
     end
   end

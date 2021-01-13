@@ -9,6 +9,8 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - unless current_page?(root_path)
+      = render 'layouts/navbar'
     - flash.each do |_type, msg|
       div
         = msg

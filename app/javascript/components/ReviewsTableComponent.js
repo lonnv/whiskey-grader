@@ -32,7 +32,7 @@ function Table({
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 20 },
+      initialState: { pageIndex: 0, pageSize: 10 },
       manualPagination: true,
       manualGlobalFilter: true,
       pageCount: controlledPageCount,

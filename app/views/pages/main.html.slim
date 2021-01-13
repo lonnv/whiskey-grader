@@ -10,9 +10,7 @@
                 p.lead
                     | Allow you to track and search your previous whiskey experiences. Add descriptions and grades based on taste, color, and smokiness.
                 .section
-                    a href="#index" class="btn btn-lg btn-white mx-1" data-smooth-scroll=""
-                        | Discover
-                    a href="#{new_review_path}" class="btn btn-lg btn-primary mx-1"
-                        | Add new
+                    = link_to('Discover', reviews_path, class:"btn btn-lg btn-white mx-1")    
+                    = link_to('Add new', new_review_path, class: "btn btn-lg btn-primary mx-1")
 
 

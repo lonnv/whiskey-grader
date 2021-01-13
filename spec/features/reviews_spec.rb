@@ -100,13 +100,13 @@ RSpec.feature 'Reviews', :js do
     end
 
     visit '/reviews'
-    expect(page).to have_content('Showing 20 of ~38 results')
-    expect(page).to have_content('Page 1 of 2')
+    expect(page).to have_content('Showing 10 of ~38 results')
+    expect(page).to have_content('Page 1 of 4')
     first_title = page.find(:xpath, '//table/tbody/tr/td', match: :first).text
     page.find('button', text: '>', match: :prefer_exact).click
 
-    expect(page).to have_content('Showing 18 of ~38 results')
-    expect(page).to have_content('Page 2 of 2')
+    expect(page).to have_content('Showing 10 of ~38 results')
+    expect(page).to have_content('Page 2 of 4')
     second_title = page.find(:xpath, '//table/tbody/tr/td', match: :first).text
 
     expect(first_title).not_to eq(second_title)
