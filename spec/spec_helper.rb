@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -30,7 +32,7 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
- # Limits the available syntax to the non-monkey patched syntax that is
+  # Limits the available syntax to the non-monkey patched syntax that is
   # recommended. For more details, see:
   #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
   #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
@@ -44,7 +46,7 @@ RSpec.configure do |config|
     # Use the documentation formatter for detailed output,
     # unless a formatter has already been configured
     # (e.g. via a command-line flag).
-    config.default_formatter = "doc"
+    config.default_formatter = 'doc'
   end
 
   # Run specs in random order to surface order dependencies. If you find an

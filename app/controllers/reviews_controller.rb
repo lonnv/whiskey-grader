@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   def index
     respond_to do |format|
@@ -7,9 +9,9 @@ class ReviewsController < ApplicationController
         @entries = ActiveModel::Serializer::CollectionSerializer.new(@reviews, serializer: ReviewSerializer)
         render json: {
           entries: @entries,
-          :current_page => @reviews.current_page,
-          :per_page => @reviews.per_page,
-          :total_entries => @reviews.total_entries    
+          current_page: @reviews.current_page,
+          per_page: @reviews.per_page,
+          total_entries: @reviews.total_entries
         }
       end
     end
@@ -23,9 +25,9 @@ class ReviewsController < ApplicationController
     @form = ReviewForm.new(review_params)
 
     if @form.submit
-        redirect_to new_review_path, notice: 'Thank you for creating a review'
+      redirect_to new_review_path, notice: 'Thank you for creating a review'
     else
-        render :new
+      render :new
     end
   end
 
@@ -41,4 +43,3 @@ class ReviewsController < ApplicationController
     )
   end
 end
-

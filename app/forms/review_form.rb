@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewForm
   include ActiveModel::Model
 
@@ -23,6 +25,7 @@ class ReviewForm
 
   def submit
     return false unless valid?
+
     make_grades_numerical
     calculate_average_grade
     create_review

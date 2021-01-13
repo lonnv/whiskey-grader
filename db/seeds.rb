@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 50.times do
   ReviewForm.new(
