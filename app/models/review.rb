@@ -6,7 +6,7 @@ class Review < ApplicationRecord
                                   using: {
                                     tsearch: { dictionary: 'english' },
                                     trigram: {
-                                      threshold: 0.2,
+                                      threshold: 0.1,
                                       only: [:title]
                                     }
                                   }

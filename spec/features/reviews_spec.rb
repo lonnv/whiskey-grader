@@ -39,6 +39,27 @@ RSpec.feature 'Reviews', :js do
     expect(page).to have_content(5)
   end
 
+  scenario 'Visitor can visit show page of an existing review' do
+    ReviewForm.new(
+      title: 'Macallan, 15 Y - Triple Cask Matured',
+      description: ''"
+      Aroma is not unpleasant but it’s not earth-shattering either,
+      rather basic, but on the good side of basic, with its delivery of fruity and malty aromas;
+      Palate is also light with malty, fruity and baked sweets notes – again,
+      not bad but light and without dramtic complexity;
+      Finish is soft and sweet and my favorite part of this Scotch.
+     "'',
+      taste_grade: 5,
+      color_grade: 4,
+      smokiness_grade: 3
+    ).submit
+
+    visit '/reviews'
+
+    page.find('td', text: 'Macallan, 15 Y - Triple Cask Matured').click
+    expect(page).to have_content('Aroma is not unpleasant but')
+  end
+
   scenario 'Visitor can search in existing reviews' do
     ReviewForm.new(
       title: 'Macallan, 15 Y - Triple Cask Matured',

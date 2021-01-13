@@ -107,12 +107,14 @@ function Table({
   );
 }
 
+
 function ReviewsTableComponent({ fetchUrl }) {
   const columns = React.useMemo(
     () => [
       {
         Header: "Title",
         accessor: "title",
+        Cell: ({cell}) => <a href={cell.row.original.url}>{cell.row.values.title}</a>
       },
       {
         Header: "Avg grade",
@@ -158,6 +160,7 @@ function ReviewsTableComponent({ fetchUrl }) {
         fetch(url)
           .then((response) => response.json())
           .then((body) => {
+            console.log(body)
             const serverData = body.entries;
             setData(serverData);
             setReviewsCount(body.total_entries);

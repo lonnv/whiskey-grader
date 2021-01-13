@@ -2,5 +2,5 @@
 
 Rails.application.routes.draw do
   root 'pages#main'
-  resources :reviews, only: %i[index new create]
+  resources :reviews, only: %i[index show new create]
 end

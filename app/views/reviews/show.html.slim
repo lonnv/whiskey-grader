@@ -1,0 +1,35 @@
+.d-flex.align-items-center.flex-column.justify-content-center.h-100
+  h1 = @review.title
+  .container.show-panel
+    .row
+      .col-md-2.col-xs-12
+        span Description
+      .col-10
+        p = @review.description
+    
+    .row
+      .col-md-2.col-xs-12
+        span Average grade
+      .col-10
+        p = @review.average_grade
+    
+    .row
+      .col-md-2.col-xs-12
+        span Taste
+      .col
+        p = @review.taste_grade
+    
+    .row
+      .col-md-2.col-xs-12
+        span Color
+      .col
+        p = @review.color_grade
+
+    .row
+      .col-md-2.col-xs-12
+        span Smokiness
+      .col
+        p = @review.smokiness_grade
+
+
+
