@@ -10,9 +10,9 @@ You should be able to search the entries based on title and description. Filteri
 
 ## Requirements
 - [x] The backend should be in Ruby on Rails.
-- [ ] A minimum of two models should be used with a has many relations.
-- [ ] Searching should be done in the backend
-- [ ] The frontend should be enriched with React, so react component to make the page dynamic (not a full SPA)
+- [x] A minimum of two models should be used with a has many relations.
+- [x] Searching should be done in the backend
+- [x] The frontend should be enriched with React, so react component to make the page dynamic (not a full SPA)
 - [x] Tests should be written in RSpec.
 - [x] Data should be stored in a RDBMS
 
@@ -33,6 +33,9 @@ As Postgres user connect to development and test database with psql and install 
 
 Run `bundle exec rspec` to run test suite
 
-## Deployment instructions
-TODO
+## Backlog
 
+- [] Deployment 
+- [] Filtering on grades
+- [] I18n support
+- [] Minimizing packs
